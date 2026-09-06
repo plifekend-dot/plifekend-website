@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,15 +29,131 @@
   "priceRange": "$$",
   "foundingDate": "2021"
 }
+
+var chStarted=false;
+var CH={
+ start:{m:"Dzień dobry, tu Ola z PlifeKend.\n\nPomogę Panu ustalić zakres i orientacyjną cenę — bez zobowiązań. Od czego zaczniemy?",
+  o:[["Remont łazienki","bath"],["Mieszkanie pod klucz","turn"],["Drobna naprawa","fix"],["Chcę tylko wycenę","quote"]]},
+
+ bath:{m:"Świetnie, łazienki to nasza specjalność — zrobiliśmy ich już ponad 80.\n\nPełny remont zaczyna się od 12 000 zł i trwa zwykle 7–14 dni, zależnie od metrażu.\n\nJaki mniej więcej metraż?",
+  o:[["Do 5 m²","bath_s"],["5–8 m²","bath_m"],["Powyżej 8 m²","bath_l"],["Nie wiem jeszcze","measure"]]},
+ bath_s:{m:"Przy takim metrażu zwykle wychodzi 12–18 tys. zł za robociznę, a prace zajmują około 7–10 dni.\n\nDokładną kwotę podam po obejrzeniu łazienki — pomiar jest bezpłatny.",
+  o:[["Umów pomiar","measure"],["Co jest w cenie?","scope"],["Wracam do menu","start"]]},
+ bath_m:{m:"Przy 5–8 m² to zazwyczaj 18–26 tys. zł i mniej więcej 10–14 dni pracy.\n\nTo widełki — realna kwota zależy od zakresu instalacji i wyboru płytek.",
+  o:[["Umów pomiar","measure"],["Co jest w cenie?","scope"],["Wracam do menu","start"]]},
+ bath_l:{m:"Duża łazienka to zwykle powyżej 26 tys. zł. Przy takim metrażu naprawdę warto, żebym przyjechała obejrzeć — różnice bywają spore.",
+  o:[["Umów pomiar","measure"],["Co jest w cenie?","scope"],["Wracam do menu","start"]]},
+ scope:{m:"W cenie robocizny jest wszystko od demontażu po sprzątanie:\n\n— skucie starego i przygotowanie podłoża\n— hydraulika i nowe podejścia\n— elektryka i punkty świetlne\n— hydroizolacja i wylewki\n— płytki, fugi, silikony\n— montaż armatury i grzejnika\n\nMateriały kupuje Klient — przygotuję dokładną listę z ilościami, żeby nie przepłacać.",
+  o:[["Umów pomiar","measure"],["Ile trwa remont?","time"],["Wracam do menu","start"]]},
+
+ turn:{m:"Remont pod klucz to 800–1400 zł/m² robocizny — zależnie od pakietu.\n\nEkonom 800, Standard 1200, Premium 2000+. Przy pakiecie pod klucz zajmujemy się wszystkim: projektem, materiałami, ekipą i odbiorem.\n\nJaki metraż mieszkania?",
+  o:[["Do 40 m²","turn_s"],["40–70 m²","turn_m"],["Powyżej 70 m²","turn_l"],["Nie wiem jeszcze","measure"]]},
+ turn_s:{m:"Przy kawalerce lub małym mieszkaniu w pakiecie Standard wychodzi zwykle 35–50 tys. zł robocizny, około 6–8 tygodni.",
+  o:[["Umów konsultację","measure"],["Czym różnią się pakiety?","pkg"],["Wracam do menu","start"]]},
+ turn_m:{m:"Przy 40–70 m² Standard to mniej więcej 50–85 tys. zł i 8–12 tygodni pracy.\n\nTo najczęstszy u nas metraż — mam sporo podobnych realizacji do pokazania.",
+  o:[["Umów konsultację","measure"],["Czym różnią się pakiety?","pkg"],["Wracam do menu","start"]]},
+ turn_l:{m:"Duże mieszkanie to projekt na kilka miesięcy i budżet powyżej 85 tys. zł. Przy takiej skali zawsze podpisujemy umowę z harmonogramem etapów.",
+  o:[["Umów konsultację","measure"],["Czym różnią się pakiety?","pkg"],["Wracam do menu","start"]]},
+ pkg:{m:"Ekonom — bazowe materiały, standardowe wykończenie, pisemna gwarancja.\n\nStandard — materiały średniej klasy plus konsultacja z projektantem. Najczęściej wybierany.\n\nPremium — materiały premium, projekt 3D, nadzór autorski i odbiór z protokołem.",
+  o:[["Umów konsultację","measure"],["Wracam do menu","start"]]},
+
+ fix:{m:"Drobne naprawy robimy zwykle w ciągu 24 godzin, ceny od 150 zł.\n\nPrzecieki, gniazdka, oświetlenie, zawiasy, montaż półek, uzupełnienie fug — takie rzeczy.\n\nNajszybciej będzie, jeśli wyśle Pan zdjęcie na WhatsApp — wycenię w kilkanaście minut.",
+  o:[["Napisz na WhatsApp","wa"],["Zadzwoń","call"],["Wracam do menu","start"]]},
+
+ time:{m:"Łazienka do 5 m² — 7–10 dni.\nŁazienka 8 m² — 10–14 dni.\nKuchnia — 14–21 dni.\nMieszkanie pod klucz — od 6 tygodni.\n\nTerminy podaję w umowie, nie na oko.",
+  o:[["Umów pomiar","measure"],["Wracam do menu","start"]]},
+
+ quote:{m:"Wycena i pomiar są bezpłatne, bez żadnych zobowiązań.\n\nNajszybsza droga to zdjęcia na WhatsApp — wtedy odpowiem jeszcze dziś. Można też zostawić dane w formularzu, oddzwonię w ciągu 24 godzin.",
+  o:[["Napisz na WhatsApp","wa"],["Wypełnię formularz","form"],["Zadzwoń teraz","call"]]},
+
+ measure:{m:"Chętnie przyjadę obejrzeć — pomiar jest bezpłatny i niczego nie zobowiązuje.\n\nJak najwygodniej się umówić?",
+  o:[["Napisz na WhatsApp","wa"],["Wypełnię formularz","form"],["Zadzwoń teraz","call"]]},
+
+ wa:{m:"Świetnie. Proszę napisać, co planujemy i dodać zdjęcie — odezwę się najszybciej jak się da.",
+  o:[["Otwórz WhatsApp","_wa"],["Wracam do menu","start"]]},
+ form:{m:"Formularz zajmuje minutę. Proszę zostawić telefon — oddzwonię w ciągu 24 godzin, w dni robocze zwykle znacznie szybciej.",
+  o:[["Przejdź do formularza","_form"],["Wracam do menu","start"]]},
+ call:{m:"Numer to +48 792 819 415, dzwonić można od poniedziałku do piątku, 8:00–18:00.\n\nGdyby nie odebrał — jestem na budowie, proszę o SMS, oddzwonię.",
+  o:[["Zadzwoń","_call"],["Wracam do menu","start"]]}
+};
+
+function chOpen(){
+  document.getElementById('chBox').classList.add('on');
+  document.getElementById('chFab').style.display='none';
+  if(!chStarted){chStarted=true;chGo('start');}
+}
+function chClose(){
+  document.getElementById('chBox').classList.remove('on');
+  document.getElementById('chFab').style.display='flex';
+}
+function chSay(t,who){
+  var d=document.createElement('div');d.className='ch-msg '+who;d.textContent=t;
+  var b=document.getElementById('chBd');b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function chGo(k,label){
+  var n=CH[k];if(!n)return;
+  var bd=document.getElementById('chBd'),ft=document.getElementById('chFt');
+  if(label)chSay(label,'me');
+  ft.innerHTML='';
+  var t=document.createElement('div');t.className='ch-typ';
+  t.innerHTML='<span></span><span></span><span></span>';
+  bd.appendChild(t);bd.scrollTop=bd.scrollHeight;
+  setTimeout(function(){
+    t.remove();chSay(n.m,'bot');
+    n.o.forEach(function(p){
+      var b=document.createElement('button');
+      b.className='ch-op'+(p[1]==='_wa'||p[1]==='wa'?' wa':'');
+      b.textContent=p[0];
+      b.onclick=function(){
+        if(p[1]==='_wa'){window.open('https://wa.me/48792819415','_blank');return;}
+        if(p[1]==='_form'){location.href='kontakt.html';return;}
+        if(p[1]==='_call'){location.href='tel:+48792819415';return;}
+        chGo(p[1],p[0]);
+      };
+      ft.appendChild(b);
+    });
+    bd.scrollTop=bd.scrollHeight;
+  }, 650);
+}
+
+var wf=document.getElementById('wycenaForm');
+if(wf){
+ wf.addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=document.getElementById('wycenaBtn'),msg=document.getElementById('wycenaMsg');
+  btn.disabled=true;btn.textContent='Wysyłanie...';
+  msg.style.display='none';
+  fetch(wf.action,{method:'POST',body:new FormData(wf),headers:{'Accept':'application/json'}})
+   .then(function(r){
+     if(r.ok){
+       wf.reset();
+       msg.style.color='#8fbf8f';
+       msg.textContent='Dziękujemy. Zapytanie dotarło — odezwę się w ciągu 24 godzin.';
+       btn.textContent='Wysłano';
+     }else{
+       msg.style.color='#d98a8a';
+       msg.textContent='Nie udało się wysłać. Proszę zadzwonić: +48 792 819 415 lub napisać na WhatsApp.';
+       btn.disabled=false;btn.textContent='Wyślij zapytanie';
+     }
+     msg.style.display='block';
+   })
+   .catch(function(){
+     msg.style.color='#d98a8a';
+     msg.textContent='Brak połączenia. Proszę zadzwonić: +48 792 819 415 lub napisać na WhatsApp.';
+     msg.style.display='block';
+     btn.disabled=false;btn.textContent='Wyślij zapytanie';
+   });
+ });
+}
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---bg:#050505;--gold:#c5a55a;--warm:#a09880;--light:#e8e0d0;
+--bg:#050505;--gold:#c5a55a;--warm:#b5ad95;--light:#ece5d6;
 --card:rgba(20,18,15,.6);--bd:rgba(197,165,90,.15);--bd2:rgba(197,165,90,.35)
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--warm);font-family:'Rajdhani',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+body{background:var(--bg);color:var(--warm);font-family:'Jost',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden}
 h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:4px}
@@ -60,7 +176,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,5,5,.88);backdrop-fil
 .burger{display:none;background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer}
 
 /* BUTTONS */
-.btn{display:inline-block;padding:13px 28px;border:1px solid rgba(197,165,90,.5);color:var(--gold);background:transparent;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;font-family:'Rajdhani',sans-serif;cursor:pointer;transition:.35s}
+.btn{display:inline-block;padding:13px 28px;border:1px solid rgba(197,165,90,.5);color:var(--gold);background:transparent;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:500;font-family:'Jost',sans-serif;cursor:pointer;transition:.35s}
 .btn:hover{background:var(--gold);color:#1a1814;border-color:var(--gold)}
 .btn-fill{background:var(--gold);color:#1a1814;border-color:var(--gold)}
 .btn-fill:hover{background:transparent;color:var(--gold)}
@@ -109,7 +225,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,5,5,.88);backdrop-fil
 .srv{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--bd);font-size:14px}
 .srv:last-child{border-bottom:none}
 .srv-n{color:var(--light)}
-.srv-p{color:var(--gold);white-space:nowrap;font-weight:600}
+.srv-p{color:var(--gold);white-space:nowrap;font-weight:500}
 
 /* PACKAGES */
 .pkg{position:relative;border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:16px;background:rgba(10,9,8,.5);transition:.3s}
@@ -123,7 +239,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,5,5,.88);backdrop-fil
 /* CALC */
 .calc label{display:block;color:var(--light);font-size:13px;text-transform:uppercase;letter-spacing:.12em;margin:18px 0 8px}
 .calc input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}
-.calc select{width:100%;padding:12px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px}
+.calc select{width:100%;padding:12px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px}
 .calc-out{margin-top:24px;text-align:center;border-top:1px solid var(--bd);padding-top:20px}
 .calc-out small{font-size:11px;text-transform:uppercase;letter-spacing:.2em}
 .calc-out div{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);font-weight:600;margin-top:6px}
@@ -157,7 +273,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,5,5,.88);backdrop-fil
 .wa:hover{transform:scale(1.1)}
 
 /* FOOTER */
-footer{border-top:1px solid var(--bd);padding:36px 40px;text-align:center;font-size:13px;color:#7d786c;letter-spacing:.05em}
+footer{border-top:1px solid var(--bd);padding:36px 40px;text-align:center;font-size:13px;color:#948e80;letter-spacing:.05em}
 footer strong{color:var(--gold)}
 
 /* MOBILE */
@@ -174,6 +290,33 @@ header{position:sticky;padding:14px 18px}
 .sphere{width:170px;height:170px}
 .pf{grid-template-columns:1fr 1fr}
 }
+
+.ch-fab{position:fixed;right:22px;bottom:88px;z-index:300;width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid rgba(197,165,90,.5);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px;cursor:pointer;transition:.3s}
+.ch-fab:hover{background:var(--gold);color:#1a1814}
+.ch-box{position:fixed;right:22px;bottom:22px;z-index:400;width:360px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 44px);background:#0a0908;border:1px solid rgba(197,165,90,.3);border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.ch-box.on{display:flex}
+.ch-hd{padding:16px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px}
+.ch-av{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(197,165,90,.4),rgba(20,18,15,.9));border:1px solid rgba(197,165,90,.4);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0}
+.ch-nm{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--light);line-height:1.2}
+.ch-st{font-size:11px;color:#7fa87f;letter-spacing:.06em}
+.ch-x{margin-left:auto;background:none;border:none;color:var(--warm);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
+.ch-x:hover{color:var(--gold)}
+.ch-bd{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ch-bd::-webkit-scrollbar{width:3px}
+.ch-msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.6;white-space:pre-line}
+.ch-msg.bot{align-self:flex-start;background:rgba(197,165,90,.09);border:1px solid rgba(197,165,90,.16);color:var(--warm);border-bottom-left-radius:4px}
+.ch-msg.me{align-self:flex-end;background:var(--gold);color:#1a1814;border-bottom-right-radius:4px}
+.ch-typ{align-self:flex-start;display:flex;gap:4px;padding:12px 14px}
+.ch-typ span{width:6px;height:6px;border-radius:50%;background:rgba(197,165,90,.6);animation:blink 1.3s infinite}
+.ch-typ span:nth-child(2){animation-delay:.2s}
+.ch-typ span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.ch-ft{padding:14px;border-top:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:7px}
+.ch-op{background:transparent;border:1px solid rgba(197,165,90,.4);color:var(--gold);padding:8px 13px;border-radius:20px;font-family:'Jost',sans-serif;font-size:12.5px;cursor:pointer;transition:.25s}
+.ch-op:hover{background:var(--gold);color:#1a1814}
+.ch-op.wa{border-color:#25D366;color:#25D366}
+.ch-op.wa:hover{background:#25D366;color:#0a0908}
+@media(max-width:520px){.ch-box{right:8px;left:8px;width:auto;bottom:8px;height:min(520px,calc(100vh - 16px))}.ch-fab{bottom:84px;right:16px}}
 </style>
 </head>
 <body>
@@ -216,25 +359,28 @@ header{position:sticky;padding:14px 18px}
 
   <div class="panel">
    <div class="panel-t">Formularz wyceny</div>
-   <form action="https://formspree.io/f/TWOJ_ID" method="POST">
+   <form id="wycenaForm" action="https://formspree.io/f/mppzjqej" method="POST">
+    <input type="hidden" name="_subject" value="Nowe zapytanie ze strony plifekend.com">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Imię i nazwisko *</label>
-    <input required name="imie" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px">
+    <input required name="imie" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px">
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Telefon *</label>
-    <input required name="telefon" type="tel" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px">
+    <input required name="telefon" type="tel" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px">
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">E-mail</label>
-    <input name="email" type="email" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px">
+    <input name="email" type="email" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px">
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Rodzaj usługi</label>
-    <select name="usluga" class="fsel" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px">
+    <select name="usluga" class="fsel" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px">
      <option>Drobne naprawy</option><option>Łazienka</option><option>Kuchnia</option>
      <option>Zabudowy GK</option><option>Remont pod klucz</option><option>Inne</option>
     </select>
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Metraż (m²)</label>
-    <input name="metraz" type="number" min="1" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px">
+    <input name="metraz" type="number" min="1" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px">
     <label style="display:block;color:var(--light);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Opis projektu</label>
-    <textarea name="opis" rows="4" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px"></textarea>
-    <button type="submit" class="btn btn-fill" style="width:100%;margin-top:20px">Wyślij zapytanie</button>
+    <textarea name="opis" rows="4" style="width:100%;padding:11px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Jost',sans-serif;font-size:15px"></textarea>
+    <button type="submit" class="btn btn-fill" id="wycenaBtn" style="width:100%;margin-top:20px">Wyślij zapytanie</button>
+    <div id="wycenaMsg" style="margin-top:14px;font-size:14px;display:none"></div>
    </form>
-   <div style="font-size:12px;color:#7d786c;margin-top:12px">Zdjęcia możesz wysłać na WhatsApp — to najszybsza droga do wyceny.</div>
+   <div style="font-size:12px;color:#948e80;margin-top:12px">Zdjęcia możesz wysłać na WhatsApp — to najszybsza droga do wyceny.</div>
   </div>
  </div>
 
@@ -246,6 +392,22 @@ header{position:sticky;padding:14px 18px}
  </div>
 </div>
 <style>@media(max-width:900px){.kgrid{grid-template-columns:1fr!important}}</style>
+
+<button class="ch-fab" id="chFab" onclick="chOpen()" aria-label="Czat z Olą">&#9671;</button>
+
+<div class="ch-box" id="chBox">
+  <div class="ch-hd">
+    <div class="ch-av">O</div>
+    <div>
+      <div class="ch-nm">Ola</div>
+      <div class="ch-st">&#9679; zwykle odpowiada od razu</div>
+    </div>
+    <button class="ch-x" onclick="chClose()" aria-label="Zamknij">&times;</button>
+  </div>
+  <div class="ch-bd" id="chBd"></div>
+  <div class="ch-ft" id="chFt"></div>
+</div>
+
 <a href="https://wa.me/48792819415" target="_blank" class="wa" aria-label="WhatsApp">💬</a>
 
 <footer>
