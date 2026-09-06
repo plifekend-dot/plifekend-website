@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - PlifeKend</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">PlifeKend</a>
+    <nav>
+      <a href="drobne-naprawy.html">Drobne Naprawy</a>
+      <a href="lazienka-kuchnia.html">Łazienka & Kuchnia</a>
+      <a href="remont-pod-klucz.html">Remont Pod Klucz</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+    </nav>
+    <a href="tel:+48792819415" class="phone-header">+48 792 819 415</a>
+  </header>
+
+  <section class="hero">
+    <h1>Skontaktuj Się Z Nami</h1>
+    <p class="hero-subtitle">Odpowiadamy w ciągu 2 godzin | Wycena bezpłatna</p>
+  </section>
+
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 40px 0;">
+      <div>
+        <h2 style="color: #e8e0d0; margin-bottom: 20px;">Dane Kontaktowe</h2>
+        <div style="color: #a09880;">
+          <p style="margin-bottom: 20px;">
+            <strong style="color: #c5a55a;">Telefon:</strong><br>
+            <a href="tel:+48792819415" style="color: #c5a55a; text-decoration: none;">+48 792 819 415</a>
+          </p>
+          <p style="margin-bottom: 20px;">
+            <strong style="color: #c5a55a;">Email:</strong><br>
+            <a href="mailto:biuro@plifekend.com" style="color: #c5a55a; text-decoration: none;">biuro@plifekend.com</a>
+          </p>
+          <p style="margin-bottom: 20px;">
+            <strong style="color: #c5a55a;">Adres:</strong><br>
+            ul. Podleśna 2<br>
+            05-270 Marki<br>
+            Warszawa
+          </p>
+          <p style="margin-bottom: 20px;">
+            <strong style="color: #c5a55a;">NIP:</strong><br>
+            9512579462
+          </p>
+          <p>
+            <strong style="color: #c5a55a;">Godziny:</strong><br>
+            Pon-Pt: 8:00-18:00<br>
+            Sob-Niedz: Na umówienie
+          </p>
+        </div>
+
+        <h3 style="color: #e8e0d0; margin-top: 40px; margin-bottom: 20px;">Szybki Kontakt</h3>
+        <div style="display: flex; gap: 15px;">
+          <a href="https://wa.me/48792819415" target="_blank" class="btn" style="flex: 1; text-align: center;">WhatsApp</a>
+          <a href="tel:+48792819415" class="btn" style="flex: 1; text-align: center;">Zadzwoń</a>
+        </div>
+      </div>
+
+      <div>
+        <h2 style="color: #e8e0d0; margin-bottom: 20px;">Formularz Kontaktowy</h2>
+        <form class="contact-form" onsubmit="handleContactForm(event)">
+          <div class="form-group">
+            <label>Imię i Nazwisko *</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="form-group">
+            <label>Telefon *</label>
+            <input type="tel" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email">
+          </div>
+          <div class="form-group">
+            <label>Typ Usługi *</label>
+            <select name="service" required>
+              <option value="">Wybierz...</option>
+              <option value="drobne">Drobne Naprawy</option>
+              <option value="lazienka">Łazienka</option>
+              <option value="kuchnia">Kuchnia</option>
+              <option value="gk">Gipsokartony</option>
+              <option value="pod-klucz">Remont Pod Klucz</option>
+              <option value="inne">Inne</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Metraż (m²)</label>
+            <input type="number" name="sqm" min="1">
+          </div>
+          <div class="form-group">
+            <label>Opis Projektu</label>
+            <textarea name="description" rows="5" placeholder="Opisz swój projekt, problemy, cele..."></textarea>
+          </div>
+          <button type="submit" class="btn" style="width: 100%; background: #c5a55a; color: #050505; border-color: #c5a55a; cursor: pointer;">Prześlij Zapytanie</button>
+        </form>
+      </div>
+    </div>
+
+    <h2 class="section-title">Najczęstsze Pytania</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-question">Jakie są Wasze godziny pracy?</div>
+        <div class="faq-answer">Pracujemy Pon-Pt: 8:00-18:00. W weekendy na umówienie.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Jak szybko mogę dostać wycenę?</div>
+        <div class="faq-answer">W ciągu 2 godzin po wysłaniu zapytania. Dł. w weekendy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Czy oferujecie rozliczenie bezpośrednie z remontem?</div>
+        <div class="faq-answer">Tak. Możliwa część przedpłaty, część po wykonaniu pracy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Czy pracujecie poza Warszawą?</div>
+        <div class="faq-answer">Głównie w Warszawie i okolicach (do 30km od centrum).</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>PlifeKend</strong> © 2026 | Warszawa</p>
+    <p>📞 +48 792 819 415 | 📧 biuro@plifekend.com | NIP: 9512579462</p>
+  </footer>
+
+  <script>
+    function handleContactForm(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      console.log('Formularz:', data);
+      alert('Dziękujemy! Skontaktujemy się wkrótce na podany numer telefonu.');
+      e.target.reset();
+    }
+
+    document.querySelectorAll('.form-group select').forEach(select => {
+      select.style.cssText = 'width: 100%; padding: 12px; background: rgba(160,152,128,0.05); border: 1px solid rgba(197,165,90,0.2); color: #e8e0d0; border-radius: 4px;';
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
