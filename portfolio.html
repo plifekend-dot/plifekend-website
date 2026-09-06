@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Realizacji — PlifeKend Warszawa</title>
+<meta name="description" content="50+ zrealizowanych mieszkań i 80+ łazienek w Warszawie. Zobacz nasze realizacje.">
+<meta property="og:title" content="PlifeKend — Remonty Łazienek i Mieszkań Warszawa">
+<meta property="og:description" content="Profesjonalne remonty łazienek i wykończenia mieszkań w Warszawie. 50+ zrealizowanych projektów.">
+<meta property="og:url" content="https://plifekend.com">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "PlifeKend",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Podleśna 2",
+    "addressLocality": "Marki",
+    "postalCode": "05-270",
+    "addressCountry": "PL"
+  },
+  "telephone": "+48792819415",
+  "url": "https://plifekend.com",
+  "priceRange": "$$",
+  "foundingDate": "2021"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#050505;--gold:#c5a55a;--warm:#a09880;--light:#e8e0d0;
+--card:rgba(20,18,15,.6);--bd:rgba(197,165,90,.15);--bd2:rgba(197,165,90,.35)
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--warm);font-family:'Rajdhani',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(197,165,90,.2);border-radius:2px}
+
+@keyframes gradient-x{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-glow{0%,100%{opacity:.35}50%{opacity:.8}}
+@keyframes spin-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:rgba(5,5,5,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;letter-spacing:.08em;background:linear-gradient(90deg,#c5a55a,#e8e0d0,#c5a55a,#8a7a4a,#c5a55a);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-x 6s ease infinite}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);transition:.3s;white-space:nowrap}
+.nav a:hover,.nav a.active{color:var(--gold)}
+.hd-right{display:flex;align-items:center;gap:16px}
+.hd-phone{color:var(--gold);font-weight:600;font-size:17px;letter-spacing:.04em}
+.burger{display:none;background:none;border:none;color:var(--gold);font-size:26px;cursor:pointer}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:13px 28px;border:1px solid rgba(197,165,90,.5);color:var(--gold);background:transparent;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:600;font-family:'Rajdhani',sans-serif;cursor:pointer;transition:.35s}
+.btn:hover{background:var(--gold);color:#1a1814;border-color:var(--gold)}
+.btn-fill{background:var(--gold);color:#1a1814;border-color:var(--gold)}
+.btn-fill:hover{background:transparent;color:var(--gold)}
+
+/* LAYOUT */
+.wrap{max-width:1500px;margin:0 auto;padding:40px 40px 80px;display:grid;grid-template-columns:24% 1fr 24%;gap:34px;align-items:start}
+.col{display:flex;flex-direction:column;gap:28px}
+
+/* PANEL */
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:16px;backdrop-filter:blur(10px);padding:28px}
+.panel-t{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--light);margin-bottom:18px;letter-spacing:.03em}
+
+/* HERO */
+.hero{text-align:center;padding:50px 0 20px}
+.hero h1{font-size:60px;line-height:1.12;color:var(--light);letter-spacing:.02em}
+.hero h1 span{display:block;background:linear-gradient(90deg,#c5a55a,#e8e0d0,#c5a55a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-x 7s ease infinite}
+.hero-sub{margin-top:16px;font-size:17px;letter-spacing:.05em}
+
+/* SPHERE */
+.sphere-row{display:flex;align-items:center;justify-content:center;gap:44px;margin:44px 0 30px}
+.avatar{text-align:center;animation:float 5s ease-in-out infinite}
+.avatar:nth-child(3){animation-delay:2.5s}
+.avatar-c{width:64px;height:64px;border-radius:50%;border:1px solid var(--bd2);background:radial-gradient(circle at 30% 30%,rgba(197,165,90,.25),rgba(20,18,15,.9));display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 10px}
+.avatar-l{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--warm)}
+.sphere{position:relative;width:210px;height:210px;cursor:pointer}
+.sphere-core{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 34% 30%,#2a2620 0%,#0c0b09 55%,#000 100%);box-shadow:0 0 60px rgba(197,165,90,.25),inset 0 0 40px rgba(0,0,0,.9)}
+.ring{position:absolute;border:1px solid rgba(197,165,90,.3);border-radius:50%;animation:spin-slow 18s linear infinite}
+.ring.r1{inset:-14px;border-top-color:var(--gold)}
+.ring.r2{inset:-30px;animation-duration:28s;animation-direction:reverse;border-bottom-color:rgba(197,165,90,.55)}
+.star{position:absolute;width:2px;height:2px;background:#e8e0d0;border-radius:50%;animation:pulse-glow 3s ease-in-out infinite}
+.sphere-hover{position:absolute;inset:0;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:.4s;background:rgba(5,5,5,.72);color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.16em;text-align:center;padding:20px}
+.sphere:hover .sphere-hover{opacity:1}
+
+/* SEGMENTS */
+.seg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:20px}
+.seg{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:30px 24px;backdrop-filter:blur(10px);transition:.35s;display:flex;flex-direction:column}
+.seg:hover{border-color:var(--bd2);transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.seg-ic{font-size:32px;margin-bottom:12px}
+.seg-t{font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--light);margin-bottom:6px}
+.seg-s{font-size:14px;margin-bottom:16px;min-height:44px}
+.seg-meta{font-size:13px;color:var(--warm);border-top:1px solid var(--bd);padding-top:14px;margin-bottom:14px}
+.seg-p{color:var(--gold);font-size:19px;font-weight:600;margin-bottom:18px}
+.seg .btn{margin-top:auto;text-align:center}
+
+/* SERVICE LIST */
+.srv{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--bd);font-size:14px}
+.srv:last-child{border-bottom:none}
+.srv-n{color:var(--light)}
+.srv-p{color:var(--gold);white-space:nowrap;font-weight:600}
+
+/* PACKAGES */
+.pkg{position:relative;border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:16px;background:rgba(10,9,8,.5);transition:.3s}
+.pkg:hover{border-color:var(--bd2)}
+.pkg-n{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--light);letter-spacing:.14em;text-transform:uppercase}
+.pkg-pr{color:var(--gold);font-size:22px;font-weight:700;margin:6px 0 12px}
+.pkg ul{list-style:none;font-size:13px;line-height:1.9}
+.pkg li::before{content:"—  ";color:var(--gold)}
+.pkg-tag{position:absolute;top:-10px;right:14px;background:var(--gold);color:#1a1814;font-size:10px;font-weight:700;letter-spacing:.18em;padding:4px 10px;border-radius:3px;text-transform:uppercase}
+
+/* CALC */
+.calc label{display:block;color:var(--light);font-size:13px;text-transform:uppercase;letter-spacing:.12em;margin:18px 0 8px}
+.calc input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}
+.calc select{width:100%;padding:12px;background:rgba(160,152,128,.05);border:1px solid var(--bd);color:var(--light);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:15px}
+.calc-out{margin-top:24px;text-align:center;border-top:1px solid var(--bd);padding-top:20px}
+.calc-out small{font-size:11px;text-transform:uppercase;letter-spacing:.2em}
+.calc-out div{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);font-weight:600;margin-top:6px}
+
+/* PORTFOLIO */
+.pf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pf-i{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--bd);cursor:pointer}
+.pf-i img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) brightness(.75);transition:.5s}
+.pf-i:hover img{filter:none;transform:scale(1.08)}
+.pf-o{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(5,5,5,.9));display:flex;align-items:flex-end;padding:12px;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--light)}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--gold),transparent)}
+.tl-i{position:relative;padding-bottom:20px}
+.tl-i::before{content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(197,165,90,.14)}
+.tl-t{color:var(--light);font-size:15px;font-weight:600}
+.tl-d{font-size:13px}
+
+/* SOCIAL / CARD */
+.vcard{text-align:center}
+.vcard-n{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--light)}
+.vcard-r{font-size:12px;text-transform:uppercase;letter-spacing:.2em;margin-bottom:14px}
+.vcard-p{display:block;font-size:24px;color:var(--gold);font-weight:600;margin-bottom:18px}
+.soc{display:flex;flex-direction:column;gap:10px;font-size:14px}
+.soc a{padding:9px 0;border-bottom:1px solid var(--bd);transition:.3s;display:flex;justify-content:space-between}
+.soc a:hover{color:var(--gold);padding-left:6px}
+
+/* WHATSAPP */
+.wa{position:fixed;right:22px;bottom:22px;z-index:300;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 22px rgba(0,0,0,.5);transition:.3s}
+.wa:hover{transform:scale(1.1)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bd);padding:36px 40px;text-align:center;font-size:13px;color:#7d786c;letter-spacing:.05em}
+footer strong{color:var(--gold)}
+
+/* MOBILE */
+@media(max-width:1100px){
+.wrap{grid-template-columns:1fr;padding:24px 18px 90px}
+.nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(5,5,5,.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid var(--bd)}
+.nav.open{display:flex}
+.burger{display:block}
+header{position:sticky;padding:14px 18px}
+.logo{font-size:24px}
+.hd-phone{font-size:15px}
+.hero h1{font-size:36px}
+.sphere-row{flex-direction:column;gap:26px}
+.sphere{width:170px;height:170px}
+.pf{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">PlifeKend</a>
+  <nav class="nav" id="nav">
+    <a href="index.html">Start</a>
+    <a href="drobne-naprawy.html">Drobne Naprawy</a>
+    <a href="lazienka-kuchnia.html">Łazienka · Kuchnia</a>
+    <a href="remont-pod-klucz.html">Pod Klucz</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="hd-right">
+    <a href="tel:+48792819415" class="hd-phone">+48 792 819 415</a>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+
+<div style="max-width:1100px;margin:0 auto;padding:40px 20px 90px">
+ <div class="hero" style="padding:40px 0 10px">
+  <h1 style="font-size:46px">Portfolio</h1>
+  <p class="hero-sub">50+ mieszkań · 80+ łazienek · od 2021</p>
+ </div>
+
+ <div class="seg-grid" style="margin-bottom:30px">
+  <div class="seg" style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:600">50+</div><div class="seg-s">Zrealizowanych mieszkań</div></div>
+  <div class="seg" style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:600">80+</div><div class="seg-s">Łazienek i kuchni</div></div>
+  <div class="seg" style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:600">5 lat</div><div class="seg-s">Na rynku warszawskim</div></div>
+ </div>
+
+ <div class="panel" style="margin-bottom:26px">
+  <div class="panel-t">Realizacje</div>
+  <div class="pf" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+   <div class="pf-i"><img src="https://picsum.photos/seed/p1/400" alt=""><div class="pf-o">Łazienka · Marki</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p2/400" alt=""><div class="pf-o">Salon · Bemowo</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p3/400" alt=""><div class="pf-o">Kuchnia · Wola</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p4/400" alt=""><div class="pf-o">Sypialnia · Targówek</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p5/400" alt=""><div class="pf-o">Łazienka · Ursynów</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p6/400" alt=""><div class="pf-o">Pod klucz · Białołęka</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p7/400" alt=""><div class="pf-o">Zabudowa GK</div></div>
+   <div class="pf-i"><img src="https://picsum.photos/seed/p8/400" alt=""><div class="pf-o">Kuchnia · Praga</div></div>
+  </div>
+ </div>
+
+ <div class="panel" style="margin-bottom:26px">
+  <div class="panel-t">Opinie klientów</div>
+  <div style="border-bottom:1px solid var(--bd);padding:16px 0"><div style="color:var(--gold);margin-bottom:6px">★★★★★</div><div style="font-size:15px">„Łazienka zrobiona idealnie. Terminowo, czysto, bez niespodzianek w cenie."</div><div style="font-size:13px;margin-top:6px;color:#7d786c">— Anna K., Warszawa</div></div>
+  <div style="border-bottom:1px solid var(--bd);padding:16px 0"><div style="color:var(--gold);margin-bottom:6px">★★★★★</div><div style="font-size:15px">„Remont pod klucz — nie musieliśmy się o nic martwić. Wszystko dopięte."</div><div style="font-size:13px;margin-top:6px;color:#7d786c">— Marek S., Marki</div></div>
+  <div style="padding:16px 0"><div style="color:var(--gold);margin-bottom:6px">★★★★★</div><div style="font-size:15px">„Drobna naprawa w 24h. Dokładnie i po sobie posprzątane."</div><div style="font-size:13px;margin-top:6px;color:#7d786c">— Ewa M., Piaseczno</div></div>
+ </div>
+
+ <div style="text-align:center"><a href="kontakt.html" class="btn btn-fill">Poproś o wycenę</a></div>
+</div>
+<a href="https://wa.me/48792819415" target="_blank" class="wa" aria-label="WhatsApp">💬</a>
+
+<footer>
+  <p><strong>PlifeKend</strong> · Warszawa · Est. 2021</p>
+  <p>ul. Podleśna 2, 05-270 Marki · NIP: 9512579462 · +48 792 819 415</p>
+  <p>© 2026 PlifeKend</p>
+</footer>
+
+<script>
+function calc(){
+  var a=document.getElementById('sr'), b=document.getElementById('ps');
+  if(!a||!b)return;
+  var s=+a.value, r=+b.value;
+  document.getElementById('sv').textContent=s;
+  document.getElementById('rv').textContent=(s*r).toLocaleString('pl-PL')+' zł';
+}
+var core=document.getElementById('core');
+if(core){
+  for(var i=0;i<26;i++){
+    var st=document.createElement('div');st.className='star';
+    st.style.left=(10+Math.random()*80)+'%';st.style.top=(10+Math.random()*80)+'%';
+    st.style.animationDelay=(Math.random()*3)+'s';core.appendChild(st);
+  }
+}
+</script>
+</body>
+</html>
